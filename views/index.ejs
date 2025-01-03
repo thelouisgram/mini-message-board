@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-top: 20px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 20px auto;
+      width: 60%;
+      max-width: 600px;
+    }
+
+    li {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      padding: 10px 15px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    strong {
+      color: #007BFF;
+    }
+
+    em {
+      font-size: 0.85em;
+      color: #666;
+    }
+
+    a {
+      text-decoration: none;
+      color: #007BFF;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .add-message-link {
+      display: block;
+      text-align: center;
+      margin: 20px auto;
+      color: #fff;
+      background-color: #007BFF;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      width: 200px;
+    }
+
+    .add-message-link:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Mini Messageboard</h1>
+  <ul>
+    <% messages.forEach((message, index) => { %>
+      <li>
+        <div>
+          <strong><%= message.user %></strong>: <%= message.text %>
+          <em>(<%= message.added.toDateString() %>)</em>
+        </div>
+        <a href="/message/<%= index %>">Open</a>
+      </li>
+    <% }) %>
+  </ul>
+  <a class="add-message-link" href="/new">Add a New Message</a>
+</body>
+</html>
